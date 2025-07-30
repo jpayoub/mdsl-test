@@ -1,97 +1,48 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+I started by creating a new React Native app using the command
+npx @react-native-community/cli init MdslTest.
 
-# Getting Started
+Then I installed the needed packages for storage and navigation:
+@react-native-async-storage/async-storage, @react-navigation/native, @react-navigation/stack, react-native-screens, and react-native-safe-area-context.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+After that, I created a src folder.
+Inside it, I made a screens folder with two screens: Home.tsx and Transfer.tsx.
 
-## Step 1: Start Metro
+I used the rnfe shortcut to quickly write functional components for both screens.
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Then I created a navigation folder and inside it I added MainNavigator.tsx.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+I installed @react-navigation/native-stack to use the stack navigator.
 
-```sh
-# Using npm
-npm start
+In the index.tsx file, I made an AppContainer that loads MainNavigator.
 
-# OR using Yarn
-yarn start
-```
+Then I changed App.tsx to load the app from AppContainer.
 
-## Step 2: Build and run your app
+Next, I installed react-native-paper and react-native-vector-icons to help with UI and icons.
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+I started designing the Home screen.
+I divided it into three components:
+One for the header (name and profile picture),
+One for showing and filtering transactions,
+And one for the top-up and transfer money buttons.
 
-### Android
+I used cards from react-native-paper to make the layout cleaner.
 
-```sh
-# Using npm
-npm run android
+Then I worked on the Transfer screen.
+I used Formik and Yup for form validation and error handling.
+I added a loading state using setTimeout and showed a toast after the action.
 
-# OR using Yarn
-yarn android
-```
+At first, I was updating AsyncStorage directly from the Transfer screen.
+But later I realized it’s better to pass update functions from the Home screen.
+This made the logic more organized and easier to control.
 
-### iOS
+After finishing Transfer, I copied the same logic to create a Top-Up screen.
+I removed the receiver field and made it behave like an incoming transaction.
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+Most of the app logic is simulated, since it’s a test project.
+Payment is not real — I used setTimeout with 2.5 seconds to simulate it.
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+All data is saved in AsyncStorage, no real database is used.
+The user is mock data — there is no login or real account.
+Transaction IDs are created using tx${Date.now()} to make them unique.
+There are no API calls — everything runs locally.
+Balance is calculated in the app using the transactions list.
