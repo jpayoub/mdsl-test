@@ -73,7 +73,11 @@ const Transfer = ({ route }: any) => {
               <TextInput
                 label="Recipient Name"
                 value={values.recipient}
-                onChangeText={handleChange('recipient')}
+                //validation of positive no letters
+                onChangeText={text => {
+                  const numbersOnly = text.replace(/[^0-9.]/g, '');
+                  handleChange('amount')(numbersOnly);
+                }}
                 onBlur={handleBlur('recipient')}
                 mode="outlined"
                 style={styles.input}

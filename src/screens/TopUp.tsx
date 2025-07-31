@@ -70,7 +70,11 @@ const TopUp = ({ route }: any) => {
               <TextInput
                 label="Amount"
                 value={values.amount}
-                onChangeText={handleChange('amount')}
+                //validation of positive no letters
+                onChangeText={text => {
+                  const numbersOnly = text.replace(/[^0-9.]/g, '');
+                  handleChange('amount')(numbersOnly);
+                }}
                 onBlur={handleBlur('amount')}
                 mode="outlined"
                 keyboardType="numeric"
