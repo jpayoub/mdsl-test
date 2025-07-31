@@ -6,15 +6,13 @@ const ActionButton = ({
   title,
   onPress,
   mode,
-  style,
 }: {
   title: string;
   onPress: () => void;
   mode: 'contained' | 'outlined';
-  style?: object;
 }) => {
   return (
-    <Button mode={mode} onPress={onPress} style={[styles.button, style]}>
+    <Button mode={mode} onPress={onPress} style={styles.button}>
       {title}
     </Button>
   );

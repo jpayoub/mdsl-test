@@ -46,8 +46,6 @@ const Transfer = ({ route }: any) => {
 
   return (
     <View style={styles.container}>
-      <Header userName={userData.name} />
-
       <View style={styles.formContainer}>
         <Formik
           initialValues={{ recipient: '', amount: '' }}
@@ -120,6 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   formContainer: {
     padding: 20,
