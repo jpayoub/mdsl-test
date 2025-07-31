@@ -23,7 +23,7 @@ const Transfer = ({ route }: any) => {
       .max(balance || 0, `Amount cannot exceed $${balance || 0}`)
       .required('Amount is required'),
   });
-
+  //made fake api call
   const handleTransfer = async (transferData: any) => {
     setLoading(true);
 

@@ -1,7 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React, { useState } from 'react';
-import { userData } from '../data/mockData';
-import Header from '../components/Header';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { Button, TextInput } from 'react-native-paper';
@@ -22,6 +20,7 @@ const TopUp = ({ route }: any) => {
       .required('Amount is required'),
   });
 
+  //made fake api call
   const handleTopUp = async (topUpData: any) => {
     setLoading(true);
 

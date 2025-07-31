@@ -13,6 +13,8 @@ const Home = () => {
   const [history, setHistory] = useState(transactions);
   const navigation = useNavigation<any>();
 
+  //save balance to local storage
+  //it saves only as string
   const saveBalance = async (newBalance: number) => {
     try {
       await AsyncStorage.setItem('userBalance', newBalance.toString());
@@ -24,7 +26,7 @@ const Home = () => {
       });
     }
   };
-
+  //save transaction to phone
   const saveTransactions = async (newHistory: any[]) => {
     try {
       await AsyncStorage.setItem(
@@ -44,6 +46,7 @@ const Home = () => {
     loadData();
   }, []);
 
+  //load all data saved on the phone
   const loadData = async () => {
     try {
       const savedBalance = await AsyncStorage.getItem('userBalance');
@@ -64,7 +67,7 @@ const Home = () => {
       });
     }
   };
-
+  //navigate to transfer with functions to update values there
   const navigateTransfer = () => {
     navigation.navigate('Transfer', {
       balance,
@@ -79,7 +82,7 @@ const Home = () => {
       },
     });
   };
-
+  //same as above
   const navigateTopUp = () => {
     navigation.navigate('TopUp', {
       balance,

@@ -11,7 +11,7 @@ const BalanceAndHistory = ({
   transactions: any[];
 }) => {
   const [selectedFilter, setSelectedFilter] = useState('all');
-
+  //to filter transactions
   const filteredTransactions = transactions.filter(transaction => {
     if (selectedFilter === 'all') return true;
     return transaction.type === selectedFilter;
